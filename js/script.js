@@ -26,14 +26,15 @@ window.addEventListener('load', function() {
     function imageBuilder() {
         let currentImagePath = currentImage.imagePath,
             imageDescription = currentImage.description;
-        () => imagesSrc.innerHTML(currentImagePath);
-
+        imagesSrc.innerHTML = currentImagePath;
+        return imagesSrc.innerHTML
     };
+    // called here to load the first image
     imageBuilder();
 
     // Adds text description to image
     currentImageText = document.getElementsByClassName('image_text')[0];
-    currentImageText.innerHTML = images.description;
+    currentImageText.innerHTML = currentImage.description;
 
     // leftButton.addEventListener('click', () => (imageBuilder(), () => counter--));
     // rightButton.addEventListener('click', () => (imageBuilder(), () => counter++));
