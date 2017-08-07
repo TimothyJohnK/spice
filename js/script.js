@@ -1,7 +1,6 @@
 window.addEventListener('load', function() {
     const leftButton = document.getElementsByClassName('left_button')[0],
         rightButton = document.getElementsByClassName('right_button')[0],
-        imagesSrc = document.getElementsByClassName('images')[0].src,
         imageRepo = [{
             'index': 1,
             'imagePath': '../images/carousel/aji_panca_chiles.jpg',
@@ -18,15 +17,17 @@ window.addEventListener('load', function() {
             'index': 4,
             'imagePath': '../images/carousel/cardamom.jpg',
             'description': 'Cardamom'
-        }];
+        }],
+        images = JSON.parse(imageRepo);
 
-    let images = JSON.parse(imageRepo),
-        counter = 1;
+    let counter = 0,
+        imagesSrc = document.getElementsByClassName('images')[0].src,
+        currentImage = images[counter];
 
-    const imageBuilder = function imageBuilder(images[counter]) {
-        let imagePath = this.imagePath,
-            imageDescription = this.description;
-        imagesSrc = this.imagePath;
+    function imageBuilder() {
+        let imagePath = currentImage.imagePath,
+            imageDescription = currentImage.description;
+        imagesSrc = currentImage.imagePath;
 
     };
 
