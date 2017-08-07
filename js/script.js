@@ -17,13 +17,12 @@ window.addEventListener('load', function() {
 
     let counter = 0,
         imagesSrc = document.getElementsByClassName('images')[0].src,
-        currentImage = images[counter];
+        currentImage = images[counter],
+        currentImagePath = currentImage.imagePath;
 
     function imageBuilder() {
-        let currentImagePath = currentImage.imagePath,
-            imageDescription = currentImage.description;
         imagesSrc.innerHTML = currentImagePath;
-        return imagesSrc.innerHTML
+        return imagesSrc.innerText
     };
     // called here to load the first image
     imageBuilder();
