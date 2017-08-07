@@ -41,10 +41,13 @@ window.addEventListener('load', function() {
     rightButton.addEventListener('click', imageBuilder());
     rightButton.addEventListener('click', () => counter++);
     rightButton.addEventListener('click', console.log(counter));
+    // validates counter
 
-    if (counter <= 1) {
-        counter = 1
-    } else if (counter >= images.length()) {
-        counter = images.length()
+    function counterValid() {
+        if (counter < 0) {
+            counter = 1
+        } else if (counter >= images.length()) {
+            counter = images.length()
+        }
     };
 });
