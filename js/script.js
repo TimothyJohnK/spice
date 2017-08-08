@@ -33,6 +33,8 @@ window.addEventListener('load', function() {
         counter = counter > (images.length - 1) ? 0 : counter;
         imagesSrc.src = images[counter].imagePath;
     };
+    // loads first image
+    imageBuilder();
 
     leftButton.addEventListener('click', () => {
         imageBuilder(-1);
