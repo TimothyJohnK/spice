@@ -17,37 +17,31 @@ window.addEventListener('load', function() {
 
     let counter = 0,
         imagesSrc = document.getElementsByClassName('images')[0].src,
-        currentImage = images[counter],
-        currentImagePath = currentImage.imagePath;
-
-    function imageBuilder() {
-        imagesSrc.innerHTML = currentImagePath;
-        return imagesSrc.innerText
-    };
-    // called here to load the first image
-    imageBuilder();
+        currentImage = images[counter];
 
     // Adds text description to image
     currentImageText = document.getElementsByClassName('image_text')[counter];
     currentImageText.innerHTML = currentImage.description;
 
-    // leftButton.addEventListener('click', () => (imageBuilder(), () => counter--));
-    // rightButton.addEventListener('click', () => (imageBuilder(), () => counter++));
-
-    leftButton.addEventListener('click', imageBuilder());
-    leftButton.addEventListener('click', () => counter--);
-    leftButton.addEventListener('click', console.log(counter))
-
-    rightButton.addEventListener('click', imageBuilder());
-    rightButton.addEventListener('click', () => counter++);
-    rightButton.addEventListener('click', console.log(counter));
-    // validates counter
-
-    function counterValid() {
-        if (counter < 0) {
-            counter = 1
-        } else if (counter >= images.length()) {
-            counter = images.length()
-        }
+    function imageBuilder(change) {
+        // First call will increment to 0.
+        counter = counter || -1;
+        // If change isn’t passed, increment;
+        change = change || 1;
+        counter += change;
+        counter = counter < 0 ? images.length : counter;
+        counter = counter > (images.length - 1) ? 0 : counter;
+        imagesSrc.src = images[counter].imagePath;
     };
+
+    leftButton.addEventListener('click', () => {
+        imageBuilder(-1);
+        counter--;
+    });
+
+    rightButton.addEventListener('click', () => {
+        imageBuilder(1);
+        counter++;
+        () => { console.log(counter) }
+    });
 });
